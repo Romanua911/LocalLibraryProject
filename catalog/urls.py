@@ -4,4 +4,5 @@ from . import views
 
 # Add admin path
 urlpatterns = [
+    path('', views.index, name='index'),
 ]
