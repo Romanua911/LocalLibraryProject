@@ -2,7 +2,7 @@ import uuid
 
 from django.db import models
 from django.urls import reverse
-
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -44,6 +44,11 @@ class Book(models.Model):
         """Return the url to access a particular book instance."""
         return reverse('book-detail', args=[str(self.id)])
 
+    def display_genre(self):
+        """"""
+        return ', '.join([genre.name for genre in self.genre.all()[:3]])
+        display_genre.short_description = 'Genre'
+
 
 class BookInstance(models.Model):
     """Model representing a specific copy of book (i.e that can be borrowed from the library)."""
@@ -52,6 +57,7 @@ class BookInstance(models.Model):
     book = models.ForeignKey('Book', on_delete=models.SET_NULL, null=True)
     imprint = models.CharField(max_length=200)
     due_back = models.DateField(null=True, blank=True)
+    borrower = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
 
     LOAN_STATUS = (
         ('m', 'Maintenance'),
