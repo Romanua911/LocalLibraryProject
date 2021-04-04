@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.views import generic
+
 from .models import Book, Author, Language, BookInstance, Genre
 
 
@@ -22,3 +24,21 @@ def index(request):
             'all_languages': all_languages
         },
     )
+
+
+class BookListView(generic.ListView):
+    model = Book
+    paginate_by = 4
+
+
+class BookDetailView(generic.DetailView):
+    model = Book
+
+
+class AuthorListView(generic.ListView):
+    model = Author
+    paginate_by = 2
+
+
+class AuthorDetailView(generic.DetailView):
+    model = Author

@@ -1,8 +1,9 @@
 import uuid
 
+from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
-from django.contrib.auth.models import User
+
 
 # Create your models here.
 
@@ -90,3 +91,6 @@ class Author(models.Model):
     def __str__(self):
         """String for representing the Model object."""
         return '{0}, {1}'.format(self.last_name, self.first_name)
+
+    class Meta:
+        ordering = ["last_name"]
