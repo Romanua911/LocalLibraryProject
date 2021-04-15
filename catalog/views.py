@@ -12,6 +12,8 @@ def index(request):
     num_authors = Author.objects.count()
     all_genres = Genre.objects.all()
     all_languages = Language.objects.all()
+    num_visits = request.session.get('num_visits', 1)
+    request.session['num_visits'] = num_visits + 1
     return render(
         request,
         'index.html',
@@ -21,7 +23,8 @@ def index(request):
             'num_instances_available': num_instances_available,
             'num_authors': num_authors,
             'all_genres': all_genres,
-            'all_languages': all_languages
+            'all_languages': all_languages,
+            'num_visits': num_visits
         },
     )
 
