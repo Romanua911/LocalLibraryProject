@@ -24,7 +24,7 @@ SECRET_KEY = '#1h6o%zw_#t3y)&9et!%x1vlg@hy96-q9=b7$r)uo*fr*x1lwg'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['local-library.test', '127.0.0.1']
 
 # Application definition
 
@@ -117,5 +117,7 @@ STATIC_URL = '/static/'
 
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
 LOGIN_REDIRECT_URL = '/'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
