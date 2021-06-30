@@ -5,7 +5,6 @@ from django.db import models
 from django.urls import reverse
 from datetime import date
 
-
 # Create your models here.
 
 
@@ -103,3 +102,5 @@ class Author(models.Model):
 
     class Meta:
         ordering = ["last_name"]
+
+
